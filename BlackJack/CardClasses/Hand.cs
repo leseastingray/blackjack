@@ -42,7 +42,7 @@ namespace CardClasses
                 return handCards[i];
             }
         }
-        // index method
+        // indexof methods
         public int IndexOf(Card c)
         {
             foreach (Card cardInHand in handCards)

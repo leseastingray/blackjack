@@ -6,27 +6,49 @@ using System.Threading.Tasks;
 
 namespace CardClasses
 {
-    public class BJHand
+    // BJHand class inherits from Hand class
+    public class BJHand : Hand
     {
-        public BJHand() { }
+        // no instance variables!
 
-        public BJHand(Deck d, int numCards) 
+        // default constructor, inherited from Hand class
+        public BJHand(): base() { }
+
+        public BJHand(Deck d, int numCards) : base(d, 2)
         { 
+
         }
 
         public int Score
         {
             get 
             {
-                return 0;
+                int score = 0;
+                foreach (Card c in handCards)
+                {
+                    if (c.IsFaceCard())
+                    {
+                        score += 10;
+                    }
+                    else
+                    {
+                        score += c.Value;
+                    }
+                }
+                if (HasAce && score <= 11)
+                {
+                    score += 10;
+                }
+                return score;
             }
         }
 
         public bool HasAce
         {
-            get 
+            get
             {
-                return false;
+                // refers to this class
+                return HasCard(1);
             }
         }
 
@@ -34,7 +56,7 @@ namespace CardClasses
         {
             get 
             {
-                return false;
+                return Score > 21;
             }
         }
     }
