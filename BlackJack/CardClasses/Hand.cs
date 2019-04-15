@@ -14,9 +14,10 @@ namespace CardClasses
         //overloaded constructor
         public Hand(Deck d, int numCards)
         {
-            for (int i = 0; i >= numCards; i++)
+            for (int i = 0; i < numCards; i++)
             {
-                d.Deal();
+                Card newcard = d.Deal();
+                handCards.Add(newcard);
             }
         }
 
@@ -30,8 +31,6 @@ namespace CardClasses
 
         public void AddCard(Card c)
         {
-            for (int i = 1; i < handCards.Count; i++)
-
             handCards.Add(c);
         }
         // indexer
@@ -59,7 +58,7 @@ namespace CardClasses
         {
             foreach (Card c in handCards)
             {
-                if (handCards.IndexOf(c) == value)
+                if (c.Value == value)
                 {
                     return handCards.IndexOf(c);
                 }
@@ -115,7 +114,22 @@ namespace CardClasses
 
         public Card Discard(int index)
         {
-            return null;
+            if (handCards.Count != 0)
+            {
+                foreach (Card c in handCards)
+                {
+                    if (IndexOf(c) == index)
+                    {
+                        handCards.Remove(c);
+                        return c;
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public override string ToString()
