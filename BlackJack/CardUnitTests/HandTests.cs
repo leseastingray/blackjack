@@ -21,6 +21,8 @@ namespace CardUnitTests
             Hand hand1 = new Hand(deck1, 5);
             Hand hand2 = new Hand(deck2, 5);
             Hand hand3 = new Hand(deck2, 5);
+            // number of cards in hand1 should be equal to 5
+            Assert.AreEqual(hand1.NumCards, 5);
             // card at index 0 should be the same in hand2 and hand3
             Assert.AreEqual(hand1[0], hand2[0]);
             // card at index 4 should be the same in hand2 and hand3
@@ -115,11 +117,108 @@ namespace CardUnitTests
             Deck deck1 = new Deck();
             Hand hand1 = new Hand(deck1, 5);
 
+            // discard card at index 3
             Card discard = hand1.Discard(3);
-            // discard card at index 3 should be Ace of Spades
+            // discarded card at index 3 should be Ace of Spades
             Assert.AreEqual(discard.ToString(), "Ace of Spades");
             // number of cards in hand1 should now be 4
             Assert.AreEqual(hand1.NumCards, 4);
+        }
+
+        [Test]
+        public void TestBJHandConstructor()
+        {
+            Deck deck1 = new Deck();
+            Deck deck2 = new Deck();
+
+            // shuffle deck2
+            deck2.Shuffle();
+
+            BJHand bjhand1 = new BJHand(deck1, 2);
+            BJHand bjhand2 = new BJHand(deck2, 2);
+
+            // The number of cards in bjhand1 should be equal to 2
+            Assert.AreEqual(bjhand1.NumCards, 2);
+            // The card at index 0 of bjhand1 should not be equal to the card
+            // at index 0 of bjhand2
+            Assert.AreNotEqual(bjhand1[0], bjhand2[0]);
+
+            // discard index 1 card from bjhand1
+            Card discard = bjhand1.Discard(1);
+            // The number of cards in bjhand1 should be equal to 1
+            Assert.AreEqual(bjhand1.NumCards, 1);
+            // discard card should be equal to "Ace of Diamonds"
+            Assert.AreEqual(discard.ToString(), "Ace of Diamonds");
+        }
+        [Test]
+        public void TestBJHandHasAce()
+        {
+            Deck deck1 = new Deck();
+            BJHand bjhand1 = new BJHand(deck1, 2);
+
+            // create Seven of Spades card
+            Card card1 = new Card(7, 4);
+            // create Five of Diamonds card
+            Card card2 = new Card(5, 2);
+
+            // HasAce should return true for bjhand1
+            Assert.True(bjhand1.HasAce);
+            // discard card in bjhand1 at index 1
+            bjhand1.Discard(1);
+            // discard card in bjhand1 at index 0
+            bjhand1.Discard(0);
+            // add card1 and card2 to bjhand1
+            bjhand1.AddCard(card1);
+            bjhand1.AddCard(card2);
+            // HasAce should now return false for bjhand1
+            Assert.False(bjhand1.HasAce);
+            
+        }
+        [Test]
+        public void TestBJHandScore()
+        {
+            Deck deck1 = new Deck();
+            BJHand bjhand1 = new BJHand(deck1, 2);
+
+            // create Seven of Spades card
+            Card card1 = new Card(7, 4);
+
+            // score of bjhand1 should be equal to 12
+            Assert.AreEqual(bjhand1.Score, 11);
+
+            // add card1 to bjhand1
+            bjhand1.AddCard(card1);
+            // score of bjhand1 should be equal to 19
+            Assert.AreEqual(bjhand1.Score, 19);
+        }
+        [Test]
+        public void TestBJHandIsBusted()
+        {
+            Deck deck1 = new Deck();
+            BJHand bjhand1 = new BJHand(deck1, 2);
+
+            // create Seven of Spades card
+            Card card1 = new Card(7, 4);
+            // create Five of Diamonds card
+            Card card2 = new Card(5, 2);
+            // create Ten of Diamonds card
+            Card card3 = new Card(9, 2);
+
+            // add card1 to bjhand1
+            bjhand1.AddCard(card1);
+            // IsBusted should return false for bjhand1.
+            Assert.False(bjhand1.IsBusted);
+
+            // discard card in bjhand1 at index 1
+            bjhand1.Discard(1);
+            // discard card in bjhand1 at index 0
+            bjhand1.Discard(0);
+            // add card2 and card3 to bjhand1
+            bjhand1.AddCard(card2);
+            bjhand1.AddCard(card3);
+            // IsBusted should now return true for bjhand1.
+            Assert.True(bjhand1.IsBusted);
+
         }
     }
 }

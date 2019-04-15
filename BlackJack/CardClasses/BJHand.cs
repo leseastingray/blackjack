@@ -6,19 +6,31 @@ using System.Threading.Tasks;
 
 namespace CardClasses
 {
-    // BJHand class inherits from Hand class
+    /// <summary>
+    /// BJHand inherits from Hand class.
+    /// </summary>
     public class BJHand : Hand
     {
         // no instance variables!
 
-        // default constructor, inherited from Hand class
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public BJHand(): base() { }
-
+        /// <summary>
+        /// Overloaded constructor, inherits overloaded
+        /// constructor from base Hand class.
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="numCards"></param>
         public BJHand(Deck d, int numCards) : base(d, 2)
         { 
 
         }
-
+        /// <summary>
+        /// Property that returns the score for the
+        /// BJHand as an int.
+        /// </summary>
         public int Score
         {
             get 
@@ -42,7 +54,10 @@ namespace CardClasses
                 return score;
             }
         }
-
+        /// <summary>
+        /// Property returning bool representing whether
+        /// the BJHand contains an Ace.
+        /// </summary>
         public bool HasAce
         {
             get
@@ -51,7 +66,10 @@ namespace CardClasses
                 return HasCard(1);
             }
         }
-
+        /// <summary>
+        /// Property returning bool representing whether
+        /// the BJHand has a busted score.
+        /// </summary>
         public bool IsBusted
         {
             get 
