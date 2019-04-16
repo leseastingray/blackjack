@@ -184,7 +184,7 @@ namespace CardUnitTests
             Card card1 = new Card(7, 4);
 
             // score of bjhand1 should be equal to 12
-            Assert.AreEqual(bjhand1.Score, 11);
+            Assert.AreEqual(bjhand1.Score, 12);
 
             // add card1 to bjhand1
             bjhand1.AddCard(card1);
@@ -211,8 +211,6 @@ namespace CardUnitTests
 
             // discard card in bjhand1 at index 1
             bjhand1.Discard(1);
-            // discard card in bjhand1 at index 0
-            bjhand1.Discard(0);
             // add card2 and card3 to bjhand1
             bjhand1.AddCard(card2);
             bjhand1.AddCard(card3);
