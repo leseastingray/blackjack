@@ -197,9 +197,11 @@ namespace CardClasses
         /// ToString method
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public virtual string ToString()
         {
             string output = "";
+            foreach (Card c in handCards)
+                output += (c.ToString() + "\n");
             return output;
         }
     }

@@ -77,5 +77,13 @@ namespace CardClasses
                 return Score > 21;
             }
         }
+        /// <summary>
+        /// ToString() override method
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
