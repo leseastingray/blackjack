@@ -10,7 +10,7 @@ namespace CardClasses
     /// Hand class representing a hand of cards.
     /// </summary>
     public class Hand
-    {
+    { 
         /// <summary>
         /// Field: List of cards declared and instantiated.
         /// </summary>
@@ -197,7 +197,7 @@ namespace CardClasses
         /// ToString method
         /// </summary>
         /// <returns></returns>
-        public virtual string ToString()
+        public new virtual string ToString()
         {
             string output = "";
             foreach (Card c in handCards)

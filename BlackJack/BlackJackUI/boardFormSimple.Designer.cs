@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boardForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boardFormSimple));
             this.card1 = new System.Windows.Forms.PictureBox();
             this.card2 = new System.Windows.Forms.PictureBox();
             this.card3 = new System.Windows.Forms.PictureBox();

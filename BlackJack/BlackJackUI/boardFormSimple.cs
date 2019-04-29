@@ -13,6 +13,18 @@ namespace BlackJack
     public partial class boardFormSimple : Form
     {
         #region Instance Variables
+        private Deck cDeck;
+
+        private Hand userHand;
+        private List<PictureBox> userHandPicBoxes;
+        private Hand computerHand;
+        private List<PictureBox> compHandPicBoxes;
+
+        private Card currentUserCard;
+
+        private int turn = -1;
+        private const int USER = 1;
+        private const int COMPUTER = 0;
         #endregion
 
         public boardFormSimple()
@@ -45,6 +57,7 @@ namespace BlackJack
 
         private void hitButton_Click(object sender, EventArgs e)
         {
+
         }
 
         private void standButton_Click(object sender, EventArgs e)
