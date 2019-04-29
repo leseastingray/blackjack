@@ -15,6 +15,18 @@ namespace CardClasses
         private List<Card> cards = new List<Card>();
 
         /// <summary>
+        /// delegate with signature of public void (Deck)
+        /// </summary>
+        /// <param name="d"></param>
+        public delegate void EmptyHandler(Deck d);
+
+        /// <summary>
+        /// event almost empty declaration
+        /// </summary>
+        public event EmptyHandler AlmostEmpty;
+
+
+        /// <summary>
         /// default constructor
         /// </summary>
         public Deck()
@@ -22,6 +34,8 @@ namespace CardClasses
             for (int value = 1; value <= 13; value++)
                 for (int suit = 1; suit <= 4; suit++)
                     cards.Add(new Card(value, suit));
+            // delegate wiring
+            AlmostEmpty = new EmptyHandler(HandleEmpty);
         }
         /// <summary>
         /// NumCards count property, returns int
@@ -50,14 +64,17 @@ namespace CardClasses
         /// <returns></returns>
         public Card Deal()
         {
-            if (!IsEmpty)
+            if (NumCards > 10)
             {
                 Card c = cards[0];
-                cards.RemoveAt(0);
+                cards.Remove(c);
                 return c;
             }
-            return
-                null;
+            else
+            {
+                AlmostEmpty(this);
+                return null;
+            }
         }
         /// <summary>
         /// Method to shuffle the deck
@@ -83,6 +100,13 @@ namespace CardClasses
             foreach (Card c in cards)
                 output += (c.ToString() + "\n");
             return output;
+        }
+        /// <summary>
+        /// empty method with same signature as EmptyHandler delegate
+        /// </summary>
+        /// <param name="d"></param>
+        public void HandleEmpty(Deck d)
+        {
         }
 
         /// <summary>

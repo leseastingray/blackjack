@@ -41,9 +41,10 @@
             this.card20 = new System.Windows.Forms.PictureBox();
             this.hitButton = new System.Windows.Forms.Button();
             this.standButton = new System.Windows.Forms.Button();
-            this.playerWinLabel = new System.Windows.Forms.Label();
-            this.dealerWinLabel = new System.Windows.Forms.Label();
+            this.computerWinLabel = new System.Windows.Forms.Label();
+            this.userWinLabel = new System.Windows.Forms.Label();
             this.playAgainButton = new System.Windows.Forms.Button();
+            this.tieLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card3)).BeginInit();
@@ -178,25 +179,25 @@
             this.standButton.UseVisualStyleBackColor = true;
             this.standButton.Click += new System.EventHandler(this.standButton_Click);
             // 
-            // playerWinLabel
+            // computerWinLabel
             // 
-            this.playerWinLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerWinLabel.Location = new System.Drawing.Point(76, 168);
-            this.playerWinLabel.Name = "playerWinLabel";
-            this.playerWinLabel.Size = new System.Drawing.Size(100, 23);
-            this.playerWinLabel.TabIndex = 55;
-            this.playerWinLabel.Text = "Winner!";
-            this.playerWinLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.computerWinLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.computerWinLabel.Location = new System.Drawing.Point(80, 168);
+            this.computerWinLabel.Name = "computerWinLabel";
+            this.computerWinLabel.Size = new System.Drawing.Size(139, 23);
+            this.computerWinLabel.TabIndex = 55;
+            this.computerWinLabel.Text = "Dealer wins!";
+            this.computerWinLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dealerWinLabel
+            // userWinLabel
             // 
-            this.dealerWinLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dealerWinLabel.Location = new System.Drawing.Point(76, 326);
-            this.dealerWinLabel.Name = "dealerWinLabel";
-            this.dealerWinLabel.Size = new System.Drawing.Size(100, 30);
-            this.dealerWinLabel.TabIndex = 56;
-            this.dealerWinLabel.Text = "Winner!";
-            this.dealerWinLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.userWinLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userWinLabel.Location = new System.Drawing.Point(76, 326);
+            this.userWinLabel.Name = "userWinLabel";
+            this.userWinLabel.Size = new System.Drawing.Size(157, 30);
+            this.userWinLabel.TabIndex = 56;
+            this.userWinLabel.Text = "User wins!";
+            this.userWinLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // playAgainButton
             // 
@@ -209,15 +210,26 @@
             this.playAgainButton.UseVisualStyleBackColor = true;
             this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
             // 
-            // boardForm
+            // tieLabel
+            // 
+            this.tieLabel.AutoSize = true;
+            this.tieLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F);
+            this.tieLabel.Location = new System.Drawing.Point(364, 326);
+            this.tieLabel.Name = "tieLabel";
+            this.tieLabel.Size = new System.Drawing.Size(49, 29);
+            this.tieLabel.TabIndex = 58;
+            this.tieLabel.Text = "Tie!";
+            // 
+            // boardFormSimple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(516, 525);
+            this.Controls.Add(this.tieLabel);
             this.Controls.Add(this.playAgainButton);
-            this.Controls.Add(this.dealerWinLabel);
-            this.Controls.Add(this.playerWinLabel);
+            this.Controls.Add(this.userWinLabel);
+            this.Controls.Add(this.computerWinLabel);
             this.Controls.Add(this.standButton);
             this.Controls.Add(this.hitButton);
             this.Controls.Add(this.card20);
@@ -231,7 +243,7 @@
             this.Controls.Add(this.card2);
             this.Controls.Add(this.card1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "boardForm";
+            this.Name = "boardFormSimple";
             this.Text = "Let\'s Play BlackJack";
             this.Load += new System.EventHandler(this.frmBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.card1)).EndInit();
@@ -245,6 +257,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.card16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.card20)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -262,9 +275,10 @@
         private System.Windows.Forms.PictureBox card20;
         private System.Windows.Forms.Button hitButton;
         private System.Windows.Forms.Button standButton;
-        private System.Windows.Forms.Label playerWinLabel;
-        private System.Windows.Forms.Label dealerWinLabel;
+        private System.Windows.Forms.Label computerWinLabel;
+        private System.Windows.Forms.Label userWinLabel;
         private System.Windows.Forms.Button playAgainButton;
+        private System.Windows.Forms.Label tieLabel;
     }
 }
 
